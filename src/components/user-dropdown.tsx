@@ -13,6 +13,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "sonner";
 
 export function UserDropdown() {
   // TODO: Render real user info
@@ -71,7 +73,15 @@ function SignOutItem() {
   const router = useRouter();
 
   async function handleSignOut() {
-    // TODO: Handle sign out
+    const { error } = await authClient.signOut();
+
+    if (error) {
+      toast.error(error.message || "Something went wrong");
+      return;
+    } else {
+      toast.success("Signed out successfully!");
+      router.push("/sign-in");
+    }
   }
 
   return (
