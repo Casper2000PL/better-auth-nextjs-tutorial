@@ -44,7 +44,7 @@ export function UserDropdown({ user }: UserDropdownProps) {
         <DropdownMenuLabel>{user.email}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href="/profile">
+          <Link href="/profile" className="cursor-pointer">
             <UserIcon className="size-4" /> <span>Profile</span>
           </Link>
         </DropdownMenuItem>
@@ -58,7 +58,7 @@ export function UserDropdown({ user }: UserDropdownProps) {
 function AdminItem() {
   return (
     <DropdownMenuItem asChild>
-      <Link href="/admin">
+      <Link href="/admin" className="cursor-pointer">
         <ShieldIcon className="size-4" /> <span>Admin</span>
       </Link>
     </DropdownMenuItem>
@@ -81,7 +81,7 @@ function SignOutItem() {
   }
 
   return (
-    <DropdownMenuItem onClick={handleSignOut}>
+    <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer">
       <LogOutIcon className="size-4" /> <span>Sign out</span>
     </DropdownMenuItem>
   );
