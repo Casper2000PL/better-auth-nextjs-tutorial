@@ -24,8 +24,6 @@ export default async function DashboardPage() {
   const session = await getServerSession();
   const user = session?.user;
 
-  console.log("User url: ", user?.image);
-
   if (!user) unauthorized();
 
   return (
