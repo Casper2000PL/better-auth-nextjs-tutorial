@@ -1,7 +1,7 @@
+import prisma from "@/lib/prisma";
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
-import { createAuthMiddleware, APIError } from "better-auth/api";
-import prisma from "@/lib/prisma";
+import { APIError, createAuthMiddleware } from "better-auth/api";
 import { passwordSchema } from "./validation";
 
 export const auth = betterAuth({
@@ -22,6 +22,16 @@ export const auth = betterAuth({
     enabled: true,
   },
   user: {
+    changeEmail: {
+      enabled: true,
+      // async sendChangeEmailVerification({ user, newEmail, url }) {
+      //   await sendEmail({
+      //     to: user.email,
+      //     subject: "Approve email change",
+      //     text: `Your email has been changed to ${newEmail}. Click the link to approve the change: ${url}`,
+      //   });
+      // },
+    },
     additionalFields: {
       role: {
         type: "string",
